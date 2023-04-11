@@ -1,0 +1,28 @@
+import {Colors} from 'react-native-ui-lib';
+
+Colors.loadColors({
+  mainText: '#222',
+  grey0: '#FFFFFF',
+  grey1: '#FAFAFA',
+  grey2: '#F5F5F5',
+  grey3: '#EEEEEE',
+  grey4: '#E0E0E0',
+  grey5: '#BDBDBD',
+  grey6: '#9E9E9E',
+  grey7: '#8C8C8C',
+  grey10: '#222222',
+  red1: '#FFF2F4',
+  red2: '#FF97A7',
+  red3: '#FF304F',
+  primary0: '#F8F9FB',
+  primary1: '#F4F7FE',
+  primary2: '#DFE7FC',
+  primary3: '#AFC3F6',
+  primary4: '#89A7F3',
+  primary5: '#6189EF',
+  green1: '#F5FFF7',
+  green3: '#22B02E',
+  yellow3: '#F4B740',
+  yellow1: '#FEF8EC',
+  bg: '#F4F5F7',
+});

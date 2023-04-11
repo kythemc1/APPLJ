@@ -1,0 +1,33 @@
+{
+  "more": {
+    "logout": "Logout",
+    "change_lang": "Change language"
+  },
+  "sign_in": {
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "sign_in": "Sign in",
+    "sign_up": "Sign up",
+    "forgot": "Forgot password?",
+    "error": "Invalid email or password",
+    "success": "You have successfully signed in",
+    "change_lang": "Change language",
+    "sign_in_bio": "login with biometric"
+  },
+  "tabs": {
+    "home": "Home",
+    "transfer": "Transfer",
+    "chart": "Chart",
+    "more": "More"
+  },
+  "language": {
+    "en": "English",
+    "vi": "Vietnamese"
+  },
+  "Signinbio": {
+    "btnfinger": "Touch to Sign In",
+    "touch": "Sign In",
+    "back": "back"
+  }
+}

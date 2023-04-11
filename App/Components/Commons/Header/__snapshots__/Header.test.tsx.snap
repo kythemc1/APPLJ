@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    [
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      {
+        "alignItems": "center",
+        "backgroundColor": "rgb(106,136,232)",
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "space-between",
+        "paddingHorizontal": 15,
+        "width": 750,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        {
+          "width": 50,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "color": "#20303C",
+            "textAlign": "left",
+          },
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ]
+      }
+    />
+  </View>
+  <Text
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "color": "#20303C",
+          "textAlign": "left",
+        },
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        {
+          "color": "#fff",
+          "fontSize": 18,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      [
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        {
+          "alignItems": "flex-end",
+          "width": 50,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "color": "#20303C",
+            "textAlign": "left",
+          },
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;

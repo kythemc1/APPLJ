@@ -1,0 +1,33 @@
+{
+  "more": {
+    "logout": "Đăng xuất",
+    "change_lang": "Đổi ngôn ngữ"
+  },
+  "sign_in": {
+    "email": "Email",
+    "username": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "sign_in": "Đăng nhập",
+    "signup": "Đăng ký",
+    "forgot": "Quên mật khẩu?",
+    "error": "Invalid email or password",
+    "success": "You have successfully signed in",
+    "change_lang": "Đổi ngôn ngữ",
+    "sign_in_bio": "đăng nhập với biometric"
+  },
+  "tabs": {
+    "home": "Trang chủ",
+    "transfer": "Giao dịch",
+    "chart": "Biểu đồ",
+    "more": "Cài đặt"
+  },
+  "language": {
+    "en": "English",
+    "vi": "Tiếng Việt"
+  },
+  "Signinbio": {
+    "btnfinger": "Chạm Để Đăng Nhập",
+    "touch": "Đăng nhập",
+    "back": "Trở lại"
+  }
+}
