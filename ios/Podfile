@@ -21,7 +21,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'ReactNativeTS' do
+target 'VuaMatTrang' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -43,7 +43,7 @@ target 'ReactNativeTS' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
   
-  target 'ReactNativeTSTests' do
+  target 'VuaMatTrangTests' do
     inherit! :complete
     # Pods for testing
   end
