@@ -8,7 +8,6 @@ import Chart from '../Containers/Chart';
 import More from '../Containers/More';
 import {useTranslation} from 'react-i18next';
 import {useAccount} from '../Hooks/API/Auth';
-
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {

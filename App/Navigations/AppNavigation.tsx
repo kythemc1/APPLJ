@@ -23,9 +23,6 @@ export default function AppNavigation() {
   const isLogged = useSelector((state: RootState) => state.auth.auth.isLogged);
 
   const getInitialRouteName = () => {
-    if (isLogged) {
-      return 'TabNavigation';
-    }
     return 'SignIn';
   };
 
@@ -37,62 +34,6 @@ export default function AppNavigation() {
     onRef(navigationRef);
     console.log(navigationRef.current.getState());
   }, [navigationRef]);
-
-  // useEffect(()=>{
-  //   checkPermissionFireBase();
-  //   //background
-  //   messaging().onNotificationOpenedApp(remoteMessage => {
-  //     console.log(
-  //       'Notification caused app to open from background state:',
-  //       remoteMessage.notification,
-  //     );
-  //   });
-  //   //Foreground
-  //   messaging().onMessage( remoteMessage => {
-  //    console.log("remoteMessage", remoteMessage);
-  //   })
-  //   // Check whether an initial notification is available
-  //   // kill
-  //   messaging()
-  //     .getInitialNotification()
-  //     .then(remoteMessage => {
-  //       if (remoteMessage) {
-  //         console.log(
-  //           'Notification caused app to open from quit state:',
-  //           remoteMessage.notification,
-  //         );
-  //       }
-  //     });
-  // },[])
-
-  // const checkPermissionFireBase = async () => {
-  //   if (Platform.OS == 'ios') {
-  //     const enabled = await messaging().hasPermission();
-  //     if (enabled == 1 || enabled == 2) {
-  //       getTokenFirebase();
-  //     } else {
-  //       requestPermissionFireBase();
-  //     }
-  //   } else {
-  //     getTokenFirebase();
-  //   }
-  // };
-
-  // const getTokenFirebase = async() => {
-  //   const fcmTokenNew = await messaging().getToken();
-  //   console.log("fcmTokenNew",fcmTokenNew);
-  // }
-  // const requestPermissionFireBase = async () => {
-  //   try {
-  //     let per = await messaging().requestPermission();
-  //     // User has authorised
-  //     console.log('queen', per);
-  //     getTokenFirebase();
-  //   } catch (error) {
-  //     // User has rejected permissions
-  //     console.log('quyền bị từ chối');
-  //   }
-  // };
   return (
     <View flex bg-white>
       <StatusBar
