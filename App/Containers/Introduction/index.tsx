@@ -1,7 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import WebView from 'react-native-webview';
-import Wrapper from 'App/Components/Commons/Wrapper';
 import {View} from 'react-native-ui-lib';
 const IntroScreen = ({navigation}: any) => {
   return (
@@ -19,8 +18,9 @@ const IntroScreen = ({navigation}: any) => {
         <Text>Back</Text>
       </TouchableOpacity>
       <WebView
+      style={{flex:1}}
         source={{
-          uri: 'https://siten.vn/vi/trang-chu',
+          uri: 'https://www.autodraw.com/',
         }}></WebView>
     </View>
   );

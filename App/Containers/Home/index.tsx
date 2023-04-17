@@ -2,16 +2,15 @@ import React, {useState, useCallback, useEffect} from 'react';
 import {GiftedChat, InputToolbar} from 'react-native-gifted-chat';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Dimensions, Text, View } from 'react-native';
-
+import Header from 'Components/Commons/Header/Header';
+import { Keyboard } from 'react-native';
 const logo = require('../../Assets/Images/2.jpg');
-
 const API_URL = 'https://api.openai.com/v1/completions';
-const YOUR_API_KEY = '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';
+const YOUR_API_KEY = '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';
 const MAX_TOKENS = 1000;
 
-export default function Home() {
+export default function Ask() {
   const [messages, setMessages] = useState([]as any);
-
   useEffect(() => {
     firstMessage();
   }, []);
@@ -20,7 +19,7 @@ export default function Home() {
     setMessages([
       {
         _id: 1,
-        text: 'Hello Kid :33',
+        text: 'Này Nhóc :33',
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -39,7 +38,7 @@ export default function Home() {
     callApi(value);
   }, []);
 
-  const callApi = async (value:any )=> {
+  const callApi = async (value:any) => {
     const res = await fetch(API_URL, {
       method: 'POST',
       headers: {
@@ -54,13 +53,10 @@ export default function Home() {
         temperature: 0,
       }),
     });
-
     const data = await res.json();
-
     if (data) {
       const value = data?.choices[0]?.text;
       addNewMessage(value);
-      console.log('Data: ', value);
     }
   };
 
@@ -87,12 +83,6 @@ export default function Home() {
           backgroundColor: "white",
           borderTopColor: "#E8E8E8",
           borderTopWidth: 1,
-          // padding: 8
-          // marginTop:20
-          borderRadius:10,
-          width:Dimensions.get("window").width*0.9,
-          marginLeft: Dimensions.get("window").width*0.05,
-          
         }}
       />
     );
@@ -100,11 +90,7 @@ export default function Home() {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{height:100,width:Dimensions.get("window").width*1,backgroundColor:'grey',borderRadius:10}}>
-          <Text style={{fontSize:30,color:"white",alignSelf:'center', marginTop:10}}>Chatbot</Text>
-          <Text style={{fontSize:30,color:"white",alignSelf:'center', marginTop:2}}>With Jennie</Text>
-      </View>
-      {/* <KeyboardAvoidingView style={styles.withoutkeyboard}> */}
+      <Header />
         <GiftedChat 
         messages={messages}
         showAvatarForEveryMessage={true}
@@ -114,8 +100,8 @@ export default function Home() {
           _id: 1,
           avatar:logo
         }}
+        keyboardShouldPersistTaps='never'
       />
-      {/* </KeyboardAvoidingView> */}
       
     </SafeAreaView>
   );

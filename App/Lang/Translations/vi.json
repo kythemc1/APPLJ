@@ -16,10 +16,10 @@
     "sign_in_bio": "đăng nhập với biometric"
   },
   "tabs": {
-    "home": "Trang chủ",
-    "transfer": "Giao dịch",
-    "chart": "Biểu đồ",
-    "more": "Cài đặt"
+    "ask": "Ask",
+    "listen": "Listen",
+    "dic": "Dic",
+    "more": "More"
   },
   "language": {
     "en": "English",

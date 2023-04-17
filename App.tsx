@@ -6,34 +6,32 @@ import {store, persistor} from './App/Store/reduxProvider';
 import {PersistGate} from 'redux-persist/integration/react';
 import {QueryClientProvider} from 'react-query';
 import queryClient from './App/Services/QueryClient';
-import RNBootSplash from 'react-native-bootsplash';
+// import RNBootSplash from 'react-native-bootsplash';
 import AppNavigation from './App/Navigations/AppNavigation';
-import {setDefaultHeaders} from './App/Services/Axios';
+// import {setDefaultHeaders} from './App/Services/Axios';
 export default function App() {
-  const Loading = () => <View></View>;
+  // const Loading = () => <View></View>;
 
-  const restoreToken = async () => {
-    const {auth} = await store.getState().auth;
-    if (auth.isLogged) {
-      //@ts-ignore
-      setDefaultHeaders({
-        Authorization: `${auth.type} ${auth.token}`,
-      });
-    }
-  };
+  // const restoreToken = async () => {
+  //   const {auth} = await store.getState().auth;
+  //   if (auth.isLogged) {
 
-  const onBeforeLift = () => {
-    restoreToken();
-    RNBootSplash.hide();
-  };
+  //   }
+  // };
+
+  // const onBeforeLift = () => {
+  //   restoreToken();
+  //   RNBootSplash.hide();
+  // };
 
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <PersistGate
           persistor={persistor}
-          loading={<Loading />}
-          onBeforeLift={onBeforeLift}>
+          // loading={<Loading />}
+          // onBeforeLift={onBeforeLift}
+          >
           <AppNavigation />
         </PersistGate>
       </QueryClientProvider>
