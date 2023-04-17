@@ -1,11 +1,10 @@
-import {useNavigation} from '@react-navigation/native';
 import {API} from '../../Configs/Constants/API';
 import {QUERY_KEY} from '../../Configs/Constants/QueryKeys';
-import React, {useState} from 'react';
-import {useMutation, useQuery} from 'react-query';
+import {useState} from 'react';
+import {useMutation} from 'react-query';
 import {useDispatch} from 'react-redux';
-import Axios, {setDefaultHeaders} from '../../Services/Axios';
-import {logout, setAuth, setUser} from '../../Store/Reducers/authSlice';
+import Axios from '../../Services/Axios';
+import {logout, setUser} from '../../Store/Reducers/authSlice';
 import {store} from '../../Store/reduxProvider';
 import {useDebouncedCallback} from 'use-debounce';
 import Navigator from '../../Utils/Navigator';
@@ -40,36 +39,7 @@ export const useLogin = () => {
   } = useMutation(
     async ({username, password}: {username: string; password: string}) => {
       Navigator.reset('TabNavigation');
-      return;
-      const {data} = await Axios({
-        method: 'post',
-        url: API.AUTH.LOGIN,
-        data: {
-          username,
-          password,
-        },
-      });
-      return data;
-    },
-    {
-      onSuccess: data => {
-        console.log("data",data); 
-        dispatch(
-          setAuth({
-            ...data,
-            isLogged: true,
-          }),
-        );
-        setDefaultHeaders({
-          Authorization: `${data.type} ${data.token}`,
-        });
-        Navigator.reset('TabNavigation');
-      },
-      onError: error => {
-        console.log(error);
-      },
-      
-    },
+    }
   );
 
   const onLogin = useDebouncedCallback(
@@ -89,7 +59,6 @@ export const useLogin = () => {
 
 export const useAuth = () => {
   const dispatch = useDispatch();
-
   const [account, setAccount] = useState<{
     username: string;
     password: string;
@@ -110,9 +79,16 @@ export const useAuth = () => {
     Navigator.reset('SignIn');
   };
 
+  const login=useDebouncedCallback(
+    async ({ username, password }: { username: string; password: string }) => {
+      if(username==='Admin' && password ==='A')
+      Navigator.reset('TabNavigation');
+    }
+  )
   return {
     account,
     onSetAccount,
     onLogout,
+    login
   };
 };

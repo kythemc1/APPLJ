@@ -2,13 +2,12 @@ import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Colors, Image, View, Text} from 'react-native-ui-lib';
-import Home from '../Containers/Home';
-import Transfer from '../Containers/Transfer';
-import Chart from '../Containers/Chart';
+import Ask from '../Containers/Home';
+import Listen from '../Containers/Transfer';
+import Dic from '../Containers/Chart';
 import More from '../Containers/More';
 import {useTranslation} from 'react-i18next';
 import {useAccount} from '../Hooks/API/Auth';
-
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
@@ -19,12 +18,12 @@ const TabNavigation = () => {
 
   const getRouteName = (routeName: string) => {
     switch (routeName) {
-      case 'Home':
-        return t('tabs.home');
-      case 'Transfer':
-        return t('tabs.transfer');
-      case 'Chart':
-        return t('tabs.chart');
+      case 'Ask':
+        return t('tabs.ask');
+      case 'Listen':
+        return t('tabs.listen');
+      case 'Dic':
+        return t('tabs.dic');
       case 'More':
         return t('tabs.more');
       default:
@@ -58,9 +57,9 @@ const TabNavigation = () => {
         },
         tabBarIcon: ({focused}) => renderIcon(route, focused),
       })}>
-      <Tab.Screen name={'Home'} component={Home} />
-      <Tab.Screen name={'Transfer'} component={Transfer} />
-      <Tab.Screen name={'Chart'} component={Chart} />
+      <Tab.Screen name={'Ask'} component={Ask} />
+      <Tab.Screen name={'Listen'} component={Listen} />
+      <Tab.Screen name={'Dic'} component={Dic} />
       <Tab.Screen name={'More'} component={More} />
     </Tab.Navigator>
   );

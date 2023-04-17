@@ -16,9 +16,9 @@
     "sign_in_bio": "login with biometric"
   },
   "tabs": {
-    "home": "Home",
-    "transfer": "Transfer",
-    "chart": "Chart",
+    "ask": "Ask",
+    "listen": "Listen",
+    "dic": "Dic",
     "more": "More"
   },
   "language": {
