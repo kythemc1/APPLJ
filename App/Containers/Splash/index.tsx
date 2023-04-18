@@ -6,9 +6,10 @@ export default function Splash({navigation}:any) {
 }, 5000);
 
   return (
-    <View style={{alignSelf:'center',marginTop:100}}>
-      <Image source={require('../../Assets/Images/2.jpg')}/>
-      <Text style={{fontSize:24,marginTop:100}}>Địt mẹ thằng thiện</Text>
+    <View style={{flex:1,alignSelf:'center',marginTop:100 }}>
+      <Image style={{height:300,width:250}} source={require('../../Assets/Images/4.png')}/>
+      <Text style={{fontSize:35,marginTop:100,alignSelf:'center',color:'rgba(20, 57, 128, 1)' }}>𝖁𝖚𝖆 𝕸𝖆̣̆𝖙 𝕿𝖗𝖆̆𝖓𝖌
+</Text>
     </View>
   );
 }
