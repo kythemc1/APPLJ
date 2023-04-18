@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from 'Components/Commons/Header/Header';
 const logo = require('../../Assets/Images/2.jpg');
 const API_URL = 'https://api.openai.com/v1/completions';
-const YOUR_API_KEY = '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';
+const YOUR_API_KEY = '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';
 const MAX_TOKENS = 1000;
 
 export default function Ask() {
