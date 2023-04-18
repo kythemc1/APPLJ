@@ -1,12 +1,10 @@
 import React, {useState, useCallback, useEffect} from 'react';
 import {GiftedChat, InputToolbar} from 'react-native-gifted-chat';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Dimensions, Text, View } from 'react-native';
 import Header from 'Components/Commons/Header/Header';
-import { Keyboard } from 'react-native';
 const logo = require('../../Assets/Images/2.jpg');
 const API_URL = 'https://api.openai.com/v1/completions';
-const YOUR_API_KEY = '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';
+const YOUR_API_KEY = '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';
 const MAX_TOKENS = 1000;
 
 export default function Ask() {
