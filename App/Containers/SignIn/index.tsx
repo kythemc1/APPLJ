@@ -8,33 +8,33 @@ import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 export default function SignIn({navigation}: any) {
   const {t} = useTranslation();
   const {onSetAccount, account,login} = useAuth();
-  useEffect(() => {
-    BioSupported();
-  }, []);
-  const BioSupported = async () => {
-    const rnBiometrics =
-      Platform.OS == 'ios'
-        ? new ReactNativeBiometrics({allowDeviceCredentials: true})
-        : new ReactNativeBiometrics();
+  // useEffect(() => {
+  //   BioSupported();
+  // }, []);
+  // const BioSupported = async () => {
+  //   const rnBiometrics =
+  //     Platform.OS == 'ios'
+  //       ? new ReactNativeBiometrics({allowDeviceCredentials: true})
+  //       : new ReactNativeBiometrics();
 
-    await rnBiometrics.isSensorAvailable().then(resultObject => {
-      const {available, biometryType} = resultObject;
-      switch (available && biometryType) {
-        case BiometryTypes.TouchID:
-          setTypeTouchID('TouchID');
-          break;
-        case BiometryTypes.FaceID:
-          setTypeTouchID('FaceID');
-          break;
-        case BiometryTypes.Biometrics:
-          setTypeTouchID('Biometrics');
-          break;
-        default:
-          setTypeTouchID('');
-          break;
-      }
-    });
-  };
+  //   await rnBiometrics.isSensorAvailable().then(resultObject => {
+  //     const {available, biometryType} = resultObject;
+  //     switch (available && biometryType) {
+  //       case BiometryTypes.TouchID:
+  //         setTypeTouchID('TouchID');
+  //         break;
+  //       case BiometryTypes.FaceID:
+  //         setTypeTouchID('FaceID');
+  //         break;
+  //       case BiometryTypes.Biometrics:
+  //         setTypeTouchID('Biometrics');
+  //         break;
+  //       default:
+  //         setTypeTouchID('');
+  //         break;
+  //     }
+  //   });
+  // };
 
   const handleBiometric = async () => {
     const rnBiometrics =

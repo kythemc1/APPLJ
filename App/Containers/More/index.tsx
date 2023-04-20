@@ -113,9 +113,9 @@ export default function More({navigation}: any) {
           )}
           {renderRowItem(
             require('../../Assets/Images/info.png'),
-            'Về chúng tôi',
+            'Scan ảnh',
             () => {
-              navigation.navigate('Intro');
+              navigation.navigate('ScanImage');
             },
           )}
         </ScrollView>

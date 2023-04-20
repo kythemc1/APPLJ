@@ -13,6 +13,7 @@ import Navigator from '../Utils/Navigator';
 import IntroScreen from 'Containers/Introduction';
 import SignInBiometric from 'Containers/SignInBiometric';
 import Splash from 'Containers/Splash';
+import ScanImage from 'Containers/ScanImage/ScanImage';
 // import messaging from '@react-native-firebase/messaging';
 export default function AppNavigation() {
   useLang();
@@ -49,6 +50,7 @@ export default function AppNavigation() {
           <Stack.Screen name="TabNavigation" component={TabNavigation} />
           <Stack.Screen name="Intro" component={IntroScreen} />
           <Stack.Screen name="SignInBiometric" component={SignInBiometric} />
+          <Stack.Screen name="ScanImage" component={ScanImage} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
