@@ -75,7 +75,7 @@ export default function SignIn({navigation}: any) {
             const {success, signature} = resultObject;
             if (success) {
               // console.log('CreateSignature1 ', signature);
-              navigation.navigate('');
+              navigation.navigate('TabNavigation');
             }
           })
           .catch();
@@ -84,7 +84,7 @@ export default function SignIn({navigation}: any) {
   };
   return (
 
-    <View onTouchMove={Keyboard.dismiss}>
+    <View onTouchMove={Keyboard.dismiss} style={{flex:1}}>
         <KeyboardAvoidingView>
 
               <View>
@@ -92,11 +92,11 @@ export default function SignIn({navigation}: any) {
                   <Image style={{alignSelf: 'center',height:100,width:80,marginTop:60}} source={require('../../Assets/Images/4.png')}/>
                 </View>
       <View>
-        <Text style={{fontSize:50,marginTop:50,marginLeft:Dimensions.get('window').width*0.05,color:'rgba(20, 57, 128, 1)'}}>
+        <Text style={{fontSize:30,marginTop:50,marginLeft:Dimensions.get('window').width*0.05,color:'rgba(20, 57, 128, 1)'}}>
           {t('sign_in.sign_in')}
         </Text>
         <View>
-          <Text style={{marginTop: 20,fontSize:18,marginLeft:Dimensions.get('window').width*0.05,color:'rgba(20, 57, 128, 1)'}}>
+          <Text style={{marginTop: 15,fontSize:18,marginLeft:Dimensions.get('window').width*0.05,color:'rgba(20, 57, 128, 1)'}}>
             {t('sign_in.username')}
           </Text>
           <View style={{position: 'relative',
@@ -117,7 +117,7 @@ export default function SignIn({navigation}: any) {
         <View>
         </View>
 
-          <Text style={{marginTop: 20,fontSize:18,marginLeft:Dimensions.get('window').width*0.05,color:'rgba(20, 57, 128, 1)'}}>
+          <Text style={{marginTop: 0,fontSize:18,marginLeft:Dimensions.get('window').width*0.05,color:'rgba(20, 57, 128, 1)'}}>
             {t('sign_in.password')}
           </Text>
           <View style={{position: 'relative',
@@ -136,7 +136,7 @@ export default function SignIn({navigation}: any) {
          
         </View>
 </View>
-        <TouchableOpacity style={{marginTop: 20,width:Dimensions.get('window').width*0.5,height:50,borderWidth:1,backgroundColor:'rgba(20, 57, 128, 1)',alignSelf:'center',borderRadius:20,alignItems:'center'}}
+        <TouchableOpacity style={{marginTop: 10,width:Dimensions.get('window').width*0.5,height:50,borderWidth:1,backgroundColor:'rgba(20, 57, 128, 1)',alignSelf:'center',borderRadius:20,alignItems:'center'}}
           onPress={() =>{login(account)}}
 >
           <Text  style={{fontSize:15,color:'white',marginTop:9}}>

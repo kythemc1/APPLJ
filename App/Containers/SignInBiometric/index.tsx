@@ -117,9 +117,7 @@ export default function SignInBiometric({navigation}: any) {
                 </View>
               </View>
             </View>
-            <View style={styles.body}>
-
-            </View>
+            <View style={styles.body} />
             <Text style={styles.textwc}>{t('Signinbio.touch')}</Text>
             <View style={styles.endThen}>
               <TouchableOpacity

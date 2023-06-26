@@ -1,15 +1,14 @@
 import React from 'react';
 import {Dimensions, StyleSheet} from 'react-native';
-import {View, Text, Image} from 'react-native';
+import {View, Image} from 'react-native';
 import {Colors} from 'react-native-ui-lib';
 
-const Header = () => {
+const HeaderChat = () => {
   return (
     <View style={styles.container}>
       <View style={styles.viewHead}>
         <View style={styles.viewText}>
-          <Text style={styles.textHello}>Xin chào bạn,</Text>
-          <Text style={styles.textWelcome}>Chúc bạn một ngày tốt lành !</Text>
+          <Image source={require('../../../Assets/Images/ion-back.png')}/>
         </View>
         <Image
           source={require('../../../Assets/Images/3.jpg')}
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 90,
-    marginTop: 5
+    marginTop: 5,
   },
   textWelcome: {
     fontFamily: 'Poppins-Regular',
@@ -56,4 +55,4 @@ const styles = StyleSheet.create({
   },
   viewText: {},
 });
-export default Header;
+export default HeaderChat;
