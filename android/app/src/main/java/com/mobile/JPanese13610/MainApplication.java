@@ -1,4 +1,4 @@
-package com.app;
+package com.mobile.JPanese13610;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
