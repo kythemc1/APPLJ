@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native-ui-lib';
+import {View, Colors} from 'react-native-ui-lib';
 import React, {useEffect, useRef} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -13,7 +13,14 @@ import Navigator from '../Utils/Navigator';
 import IntroScreen from 'Containers/Introduction';
 import SignInBiometric from 'Containers/SignInBiometric';
 import Splash from 'Containers/Splash';
-// import messaging from '@react-native-firebase/messaging';
+import ScanImage from 'Containers/ScanImage/ScanImage';
+import Ask from 'Containers/Home';
+import Listen from 'Containers/Listen';
+import ListenDetails from 'Containers/ListenDetails';
+import Dic from 'Containers/Dictionary';
+import Vocabulary from 'Containers/Vocabulary';
+import AskDetails from 'Containers/AskDetails.tsx';
+import Grammar from "Containers/Grammar";
 export default function AppNavigation() {
   useLang();
   const navigationRef = useRef<any | null>(null);
@@ -35,7 +42,7 @@ export default function AppNavigation() {
     <View flex bg-white>
       <StatusBar
         translucent
-        backgroundColor={'transparent'}
+        backgroundColor={Colors.bgCl}
         barStyle={'dark-content'}
       />
       <NavigationContainer ref={navigationRef}>
@@ -49,6 +56,14 @@ export default function AppNavigation() {
           <Stack.Screen name="TabNavigation" component={TabNavigation} />
           <Stack.Screen name="Intro" component={IntroScreen} />
           <Stack.Screen name="SignInBiometric" component={SignInBiometric} />
+          <Stack.Screen name="ScanImage" component={ScanImage} />
+          <Stack.Screen name="Ask" component={Ask} />
+          <Stack.Screen name="AskDetails" component={AskDetails} />
+          <Stack.Screen name="Listen" component={Listen} />
+          <Stack.Screen name="ListenDetails" component={ListenDetails} />
+          <Stack.Screen name="Dic" component={Dic} />
+          <Stack.Screen name="Vocabulary" component={Vocabulary} />
+          <Stack.Screen name="Grammar" component={Grammar} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

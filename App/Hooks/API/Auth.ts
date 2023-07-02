@@ -28,34 +28,6 @@ export const useAccount = () =>
     mutationKey: [QUERY_KEY.AUTH.ACCOUNT],
   });
 
-export const useLogin = () => {
-  const dispatch = useDispatch();
-  const {mutateAsync: onGetAccountAsync} = useAccount();
-
-  const {
-    mutateAsync: onLoginAsync,
-    isLoading: loading,
-    isSuccess: success,
-  } = useMutation(
-    async ({username, password}: {username: string; password: string}) => {
-      Navigator.reset('TabNavigation');
-    }
-  );
-
-  const onLogin = useDebouncedCallback(
-    async (account: {username: string; password: string}) => {
-      await onLoginAsync(account);
-      await onGetAccountAsync();
-    },
-    250,
-  );
-
-  return {
-    onLogin,
-    loading,
-    success,
-  };
-};
 
 export const useAuth = () => {
   const dispatch = useDispatch();

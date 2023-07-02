@@ -25,4 +25,6 @@ Colors.loadColors({
   yellow3: '#F4B740',
   yellow1: '#FEF8EC',
   bg: '#F4F5F7',
+  text: '#011f4b',
+  bgCl: '#e7eff6'
 });
