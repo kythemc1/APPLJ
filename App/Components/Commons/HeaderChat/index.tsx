@@ -1,15 +1,26 @@
 import React from 'react';
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet, TouchableOpacity} from 'react-native';
 import {View, Image} from 'react-native';
 import {Colors} from 'react-native-ui-lib';
 
-const HeaderChat = () => {
+interface props {
+  screenBack: string;
+  navigation: any;
+}
+const HeaderChat = (props: props) => {
   return (
     <View style={styles.container}>
       <View style={styles.viewHead}>
-        <View style={styles.viewText}>
-          <Image source={require('../../../Assets/Images/ion-back.png')}/>
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate(`${props.screenBack}`);
+          }}
+          style={styles.viewText}>
+          <Image
+            source={require('../../../Assets/Images/ion-back.png')}
+            style={{height: 25, width: 25, marginTop: 15}}
+          />
+        </TouchableOpacity>
         <Image
           source={require('../../../Assets/Images/3.jpg')}
           style={styles.avatar}
@@ -31,6 +42,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3, // Độ mờ của bóng (áp dụng cho iOS)
     shadowRadius: 4, // Độ rộng của bóng (áp dụng cho iOS)
+    paddingBottom: 5,
   },
   textHello: {
     fontFamily: 'Poppins-Medium',
@@ -41,7 +53,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 90,
-    marginTop: 5,
+    marginTop: 3,
   },
   textWelcome: {
     fontFamily: 'Poppins-Regular',

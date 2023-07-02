@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import Wrapper from '../../Components/Commons/Wrapper';
 import Header from '../../Components/Commons/Header/Header';
+import {Colors} from 'react-native-ui-lib';
 
 export default function More({navigation}: any) {
   const renderRowItem = (iconLeft: any, title: string, onPress: () => void) => {
@@ -23,7 +24,7 @@ export default function More({navigation}: any) {
             source={iconLeft}
             style={{width: 40, height: 40, marginRight: 10}}
           />
-          <Text style={{fontSize: 18}}>{title ? title : ''}</Text>
+          <Text style={{fontSize: 18, color : Colors.text}}>{title ? title : ''}</Text>
         </View>
         <Image
           source={require('../../Assets/Images/arrow-right.png')}
@@ -42,7 +43,7 @@ export default function More({navigation}: any) {
               paddingHorizontal: 10,
               paddingVertical: 20,
               fontWeight: 'bold',
-              color: 'gray',
+              color: Colors.text,
               fontSize: 18,
             }}>
             Game
@@ -59,7 +60,7 @@ export default function More({navigation}: any) {
               paddingHorizontal: 10,
               paddingVertical: 20,
               fontWeight: 'bold',
-              color: 'gray',
+              color: Colors.text,
               fontSize: 18,
             }}>
             Khác
@@ -69,6 +70,13 @@ export default function More({navigation}: any) {
             'Scan Image',
             () => {
               navigation.navigate('ScanImage');
+            },
+          )}
+          {renderRowItem(
+            require('../../Assets/Images/policy.png'),
+            'Dictionary',
+            () => {
+              navigation.navigate('Dic');
             },
           )}
         </ScrollView>

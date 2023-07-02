@@ -30,7 +30,7 @@ export default function Ask({navigation}: any) {
               - Bro có thể nhập câu hỏi từ Chat
             </Text>
             <Text style={styles.textIntro}>- Tôi sẽ cho bro đáp án</Text>
-            <Text style={styles.textIntro}>-Đừng tin tôi</Text>
+            <Text style={styles.textIntro}>-Hãy tin tôi</Text>
           </View>
           <TouchableOpacity
             onPress={() => {

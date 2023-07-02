@@ -11,14 +11,109 @@ import {
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import YouTubePlayer, {YoutubeIframeRef} from 'react-native-youtube-iframe';
+import ListenAndRead from 'Components/ListenAndRead/index';
+import {Colors} from 'react-native-ui-lib';
+import HeaderChat from "Components/Commons/HeaderChat";
+const mokData = {
+  VideoId: '0zTjrsIWrC4',
+  Name: 'Bạn có tài mà',
+  level: 5,
+  onStart: [
+    {
+      time: 0,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+    {
+      time: 9,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+    {
+      time: 19,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+    {
+      time: 32,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+    {
+      time: 44,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+    {
+      time: 59,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+    {
+      time: 73,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+    {
+      time: 87,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+    {
+      time: 69,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+    {
+      time: 79,
+      content: [
+        '―失礼ですが、お名前は？',
+        '－イ―です',
+        '－イさんですか',
+        '－いいえ、－イですか',
+      ],
+    },
+  ],
+};
 
-export default function Listen() {
+export default function ListenDetails({navigation}: any) {
   const [playing, setPlaying] = useState(false);
-  // const handleSeekTo = () => {
-  //   console.log('tua ....');
-
-  //   playerRef.current?.setCurrentTime(30);
-  // };
   const onStateChange = useCallback((state: string) => {
     if (state === 'ended') {
       setPlaying(false);
@@ -30,177 +125,40 @@ export default function Listen() {
   }, []);
   const playerRef = useRef<YoutubeIframeRef>(null);
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <Header />
+    <SafeAreaView style={styles.container}>
+      <HeaderChat navigation={navigation} screenBack={'TabNavigation'} />
       <YouTubePlayer
         play={playing}
         videoId="0zTjrsIWrC4"
-        height={200}
+        height={250}
         width={Dimensions.get('window').width * 1}
         onChangeState={onStateChange}
         ref={playerRef}
       />
-      <TouchableOpacity style={styles.buttonBig} onPress={togglePlaying}>
-        <Text style={styles.textBtn}>Play / Pause</Text>
+      <TouchableOpacity style={styles.buttonPause} onPress={togglePlaying}>
+        <Text style={styles.textPause}>Play / Pause</Text>
       </TouchableOpacity>
       <ScrollView>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(9, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
+        {mokData.onStart.map((items, index) => (
+          <View style={styles.viewDetails} key={index}>
+            <TouchableOpacity
+              style={styles.buttonUnder}
+              onPress={() => {
+                playerRef.current?.seekTo(items.time, true);
+              }}>
+              <Text style={styles.textBtn}>Start : {items.time}</Text>
+            </TouchableOpacity>
+            <ListenAndRead content={items.content} />
           </View>
-        </View>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(19, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
-          </View>
-        </View>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(32, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
-          </View>
-        </View>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(44, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
-          </View>
-        </View>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(59, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
-          </View>
-        </View>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(73, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
-          </View>
-        </View>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(87, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
-          </View>
-        </View>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(46, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
-          </View>
-        </View>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(122, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
-          </View>
-        </View>
-        <View style={styles.viewDetails}>
-          <TouchableOpacity
-            style={styles.buttonUnder}
-            onPress={() => {
-              playerRef.current?.seekTo(9, true);
-            }}>
-            <Text style={styles.textBtn}>Start</Text>
-          </TouchableOpacity>
-          <View>
-            <Text>―失礼ですが、お名前は？</Text>
-            <Text>－イ―です</Text>
-            <Text>－イさんですか</Text>
-            <Text>－いいえ、－イですか</Text>
-          </View>
-        </View>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#f9f4f4',
+    flex: 1,
   },
   titleText: {
     fontSize: 22,
@@ -208,10 +166,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 20,
   },
-  textBtn: {
-    color: '#143980',
+  textPause: {
+    color: 'white',
     alignSelf: 'center',
     marginTop: 9,
+    fontFamily: 'Poppins-Medium',
+  },
+  textBtn: {
+    color: Colors.text,
+    alignSelf: 'center',
+    marginTop: 9,
+    fontFamily: 'Poppins-Medium',
   },
   buttonGroup: {
     flexDirection: 'row',
@@ -245,6 +210,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#143980',
     borderWidth: 1,
+    alignSelf: 'center',
+    marginTop: 0,
+  },
+  buttonPause: {
+    height: 40,
+    width: 100,
+    backgroundColor: '#2a4d69',
+    borderRadius: 10,
     alignSelf: 'center',
     marginTop: 0,
   },

@@ -18,10 +18,11 @@ const IntroScreen = ({navigation}: any) => {
         <Text>Back</Text>
       </TouchableOpacity>
       <WebView
-      style={{flex:1}}
+        style={{flex: 1}}
         source={{
           uri: 'https://www.autodraw.com/',
-        }}></WebView>
+        }}
+      />
     </View>
   );
 };

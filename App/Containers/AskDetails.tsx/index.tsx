@@ -1,15 +1,16 @@
 import React, {useState, useCallback, useEffect} from 'react';
 import {GiftedChat, InputToolbar} from 'react-native-gifted-chat';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Colors} from 'react-native-ui-lib';
-// import HeaderChat from 'Components/Commons/HeaderChat/index';
-import Header from "Components/Commons/Header/Header";
+import Header from 'Components/Commons/Header/Header';
+import {StyleSheet} from 'react-native';
+import {API, API_KEY_CHAT_BOT} from 'Configs/Constants/API';
+import HeaderChat from "Components/Commons/HeaderChat";
 const logo = require('../../Assets/Images/2.jpg');
-const API_URL = 'https://api.openai.com/v1/completions';
-const YOUR_API_KEY = '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';
+const API_URL = API.API_CHAT_BOT;
+const YOUR_API_KEY = API_KEY_CHAT_BOT;
 const MAX_TOKENS = 1000;
 
-export default function AskDetails() {
+export default function AskDetails({navigation} : any) {
   const [messages, setMessages] = useState([] as any);
   useEffect(() => {
     firstMessage();
@@ -30,16 +31,13 @@ export default function AskDetails() {
     ]);
   };
 
-  const onSend = useCallback(
-    (messages = []) => {
-      setMessages((previousMessages: any) =>
-        GiftedChat.append(previousMessages, messages),
-      );
-      const value = messages[0].text;
-      callApi(value);
-    },
-    [callApi],
-  );
+  const onSend = useCallback((messages = []) => {
+    setMessages((previousMessages: any) =>
+      GiftedChat.append(previousMessages, messages),
+    );
+    const value = messages[0].text;
+    callApi(value);
+  }, []);
 
   const callApi = async (value: any) => {
     const res = await fetch(API_URL, {
@@ -87,14 +85,18 @@ export default function AskDetails() {
           backgroundColor: 'white',
           borderTopColor: '#E8E8E8',
           borderTopWidth: 1,
+          borderRadius: 20,
+          borderColor: 'blue',
+          // height: 50,
+          // marginBottom: 20
         }}
       />
     );
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: Colors.bgCl}}>
-      <Header/>
+    <SafeAreaView style={{flex: 1}}>
+      <HeaderChat navigation={navigation} screenBack={'TabNavigation'} />
       <GiftedChat
         messages={messages}
         showAvatarForEveryMessage={true}
@@ -105,7 +107,28 @@ export default function AskDetails() {
           avatar: logo,
         }}
         keyboardShouldPersistTaps="never"
+        textInputProps={styles.textInput}
       />
     </SafeAreaView>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFFFFF', // Màu nền của InputToolbar
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 25,
+    marginHorizontal: 8,
+  },
+  textInput: {
+    color: 'black', // Đặt màu chữ là đen
+    flex: 1,
+    paddingHorizontal: 10,
+    fontSize: 16,
+  },
+});
