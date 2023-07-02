@@ -1,4 +1,4 @@
-package com.app;
+package com.mobilie.13610;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

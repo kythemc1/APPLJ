@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface VuaMatTrangTests : XCTestCase
+@interface NhậtNgữ13610Tests : XCTestCase
 
 @end
 
-@implementation VuaMatTrangTests
+@implementation NhậtNgữ13610Tests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

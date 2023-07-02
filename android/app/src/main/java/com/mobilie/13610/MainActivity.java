@@ -1,4 +1,4 @@
-package com.app;
+package com.mobilie.13610;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "VuaMatTrang";
+    return "Nhật Ngữ 13610";
   }
 
   /**
