@@ -93,5 +93,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     alignSelf: 'center',
+
+
   },
 });
