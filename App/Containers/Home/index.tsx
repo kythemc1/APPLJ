@@ -9,8 +9,8 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
-} from 'react-native';
+  View
+} from "react-native";
 import Header from 'Components/Commons/Header/Header';
 
 export default function Ask({navigation}: any) {
@@ -24,6 +24,8 @@ export default function Ask({navigation}: any) {
         />
         <View style={styles.viewIntro}>
           <View>
+
+
             <Text style={styles.textIntro}>Hãy hỏi tôi</Text>
             <Text style={styles.textIntro}>- Sử dụng API từ OpenAI</Text>
             <Text style={styles.textIntro}>

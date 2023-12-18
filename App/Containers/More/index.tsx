@@ -1,6 +1,5 @@
 import React from 'react';
-import {Image, View, Text, TouchableOpacity, ScrollView} from 'react-native';
-import Wrapper from '../../Components/Commons/Wrapper';
+import {Image, View, Text, TouchableOpacity, ScrollView, SafeAreaView, StyleSheet, Dimensions} from 'react-native';
 import Header from '../../Components/Commons/Header/Header';
 import {Colors} from 'react-native-ui-lib';
 
@@ -34,9 +33,9 @@ export default function More({navigation}: any) {
     );
   };
   return (
-    <Wrapper>
+      <SafeAreaView style={styles.container}>
       <Header />
-      <View style={{flex: 1, backgroundColor: '#e6e6e6'}}>
+      <View style={{flex: 1, backgroundColor: '#f9f4f4'}}>
         <ScrollView>
           <Text
             style={{
@@ -81,6 +80,9 @@ export default function More({navigation}: any) {
           )}
         </ScrollView>
       </View>
-    </Wrapper>
+      </SafeAreaView>
   );
 }
+const styles = StyleSheet.create({
+    container: {flex: 1, backgroundColor: '#f9f4f4'},
+});

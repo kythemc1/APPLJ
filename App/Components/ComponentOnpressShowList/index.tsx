@@ -5,39 +5,26 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import RenderListTuVung from 'Components/RenderListTuVung';
 import React, {useState} from 'react';
 import {Colors} from 'react-native-ui-lib';
 interface props {
-  Voca_N3_1: {Kanji: string; Hiragana: string; Meaning: string}[];
   name: string;
+  navigation : any;
+  page : number;
+  level : string;
+  cate : string;
+  pressToScreen: string;
 }
 export default function ComponentOnpressShowList(props: props) {
-  const [show, setShow] = useState(false);
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.pressShow}
         onPress={() => {
-          setShow(!show);
+          props.navigation.navigate(props.pressToScreen,{level : props.level,name: props.name,cate: props.cate,page: props.page});
         }}>
-        <Text style={styles.textTittle}>{props.name}</Text>
+        <Text style={styles.textTittle}>{props.name}{'   '+props.level}{'   '+props.page}</Text>
       </TouchableOpacity>
-
-      <View>
-        {show ? (
-          <View>
-            <TouchableOpacity>
-              <Text style={styles.textTittle}> ☛ ☞ Luyện tập với flash card</Text>
-            </TouchableOpacity>
-            {props.Voca_N3_1.map((items, index) => (
-              <RenderListTuVung key={index} state={items} />
-            ))}
-          </View>
-        ) : (
-          <View />
-        )}
-      </View>
     </View>
   );
 }
@@ -49,7 +36,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.9,
     alignSelf: 'center',
     borderRadius: 20,
-    marginBottom: 20
+    // marginBottom: 20,
+    marginTop: 20
   },
   textTittle: {
     color: Colors.text,

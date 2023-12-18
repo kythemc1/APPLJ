@@ -1,5 +1,5 @@
-import {View, Text, TouchableOpacity, Keyboard, Platform} from 'react-native';
-import React from 'react';
+import { View, Text, TouchableOpacity, Keyboard, Platform, Alert } from "react-native";
+import React, { useEffect, useState } from "react";
 import {
   Dimensions,
   Image,
@@ -14,79 +14,86 @@ import ReactNativeBiometrics, {BiometryTypes} from 'react-native-biometrics';
 export default function SignIn({navigation}: any) {
   const {t} = useTranslation();
   const {onSetAccount, account, login} = useAuth();
-  // useEffect(() => {
-  //   BioSupported();
-  // }, []);
-  // const BioSupported = async () => {
-  //   const rnBiometrics =
-  //     Platform.OS == 'ios'
-  //       ? new ReactNativeBiometrics({allowDeviceCredentials: true})
-  //       : new ReactNativeBiometrics();
-
-  //   await rnBiometrics.isSensorAvailable().then(resultObject => {
-  //     const {available, biometryType} = resultObject;
-  //     switch (available && biometryType) {
-  //       case BiometryTypes.TouchID:
-  //         setTypeTouchID('TouchID');
-  //         break;
-  //       case BiometryTypes.FaceID:
-  //         setTypeTouchID('FaceID');
-  //         break;
-  //       case BiometryTypes.Biometrics:
-  //         setTypeTouchID('Biometrics');
-  //         break;
-  //       default:
-  //         setTypeTouchID('');
-  //         break;
-  //     }
-  //   });
-  // };
-
-  const handleBiometric = async () => {
+  const [typeTouchId,setTypeTouchID]=useState('');
+  useEffect(() => {
+    BioSupported();
+  }, []);
+  const BioSupported = async () => {
     const rnBiometrics =
       Platform.OS == 'ios'
         ? new ReactNativeBiometrics({allowDeviceCredentials: true})
         : new ReactNativeBiometrics();
-    let epochTimeSeconds = Math.round(new Date().getTime() / 1000).toString();
-    let payload = epochTimeSeconds + 'some message';
-    rnBiometrics.biometricKeysExist().then(async resultObject => {
-      const {keysExist} = resultObject;
-      if (keysExist) {
-        rnBiometrics
-          .createSignature({
-            promptMessage: `${t('Signinbio.touch')}`,
-            payload: payload,
-          })
-          .then(async resultObject => {
-            const {success, signature} = resultObject;
-            if (success) {
-              // console.log('CreateSignature ', signature);
-              // if (pinCode === pin) {
-              navigation.navigate('TabNavigation');
-              // }
-            }
-          })
-          .catch();
-      } else {
-        // console.log('Keys do not exist or were deleted');
-        await rnBiometrics.createKeys().then(resultObject => {
-          const {publicKey} = resultObject;
-        });
-        rnBiometrics
-          .createSignature({
-            promptMessage: `${t('Signinbio.touch')}`,
-            payload: payload,
-          })
-          .then(async resultObject => {
-            const {success, signature} = resultObject;
-            if (success) {
-              // console.log('CreateSignature1 ', signature);
-              navigation.navigate('TabNavigation');
-            }
-          })
-          .catch();
+
+    await rnBiometrics.isSensorAvailable().then(resultObject => {
+      const {available, biometryType} = resultObject;
+      switch (available && biometryType) {
+        case BiometryTypes.TouchID:
+          setTypeTouchID('TouchID');
+          break;
+        case BiometryTypes.FaceID:
+          setTypeTouchID('FaceID');
+          break;
+        case BiometryTypes.Biometrics:
+          setTypeTouchID('Biometrics');
+          break;
+        default:
+          setTypeTouchID('');
+          break;
       }
     });
+  };
+
+  const handleBiometric = async () => {
+    if (typeTouchId == 'FaceID' || typeTouchId == 'TouchID' || typeTouchId == 'Biometrics'){
+      const rnBiometrics =
+        Platform.OS == 'ios'
+          ? new ReactNativeBiometrics({allowDeviceCredentials: true})
+          : new ReactNativeBiometrics();
+      let epochTimeSeconds = Math.round(new Date().getTime() / 1000).toString();
+      let payload = epochTimeSeconds + 'some message';
+      rnBiometrics.biometricKeysExist().then(async resultObject => {
+        const {keysExist} = resultObject;
+        if (keysExist) {
+          rnBiometrics
+            .createSignature({
+              promptMessage: `${t('Signinbio.touch')}`,
+              payload: payload,
+            })
+            .then(async resultObject => {
+              const {success, signature} = resultObject;
+              if (success) {
+                // console.log('CreateSignature ', signature);
+                // if (pinCode === pin) {
+                navigation.navigate('TabNavigation');
+                // }
+              }
+            })
+            .catch();
+        } else {
+          // console.log('Keys do not exist or were deleted');
+          await rnBiometrics.createKeys().then(resultObject => {
+            const {publicKey} = resultObject;
+          });
+          rnBiometrics
+            .createSignature({
+              promptMessage: `${t('Signinbio.touch')}`,
+              payload: payload,
+            })
+            .then(async resultObject => {
+              const {success, signature} = resultObject;
+              if (success) {
+                // console.log('CreateSignature1 ', signature);
+                navigation.navigate('TabNavigation');
+              }
+            })
+            .catch();
+        }
+      });
+    }
+    else if(typeTouchId == '')
+    {
+      Alert.alert('Không Hỗ Trợ')
+    }
   };
   return (
     <View
@@ -206,6 +213,31 @@ export default function SignIn({navigation}: any) {
               {t('sign_in.sign_in')}
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              marginTop: 10,
+              width: Dimensions.get('window').width * 0.5,
+              height: 50,
+              borderWidth: 1,
+              backgroundColor: 'rgba(20, 57, 128, 1)',
+              alignSelf: 'center',
+              borderRadius: 20,
+              alignItems: 'center',
+            }}
+            onPress={() => {
+              navigation.navigate("Register")
+            }}>
+            <Text
+              style={{
+                fontSize: 15,
+                color: 'white',
+                marginTop: 9,
+                fontFamily: 'Poppins-SemiBold',
+              }}>
+              Register
+            </Text>
+          </TouchableOpacity>
+          
           <Text
             style={{
               fontSize: 15,
@@ -230,6 +262,18 @@ export default function SignIn({navigation}: any) {
               }}
               source={require('../../Assets/Images/Union.png')}
             />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=>{navigation.navigate("ForgotPassword")}}>
+            <Text
+            style={{
+              fontSize: 15,
+              color: 'rgba(20, 57, 128, 1)',
+              marginTop: 40,
+              alignSelf: 'center',
+              fontFamily: 'Poppins-Light',
+            }}>
+            forgot password
+            </Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>

@@ -1,10 +1,10 @@
 import React from 'react';
-import Wrapper from '../../Components/Commons/Wrapper';
 import WebView from 'react-native-webview';
 import HeaderChat from 'Components/Commons/HeaderChat';
+import {View} from "react-native";
 export default function Dic({navigation}: any) {
   return (
-    <Wrapper>
+    <View>
       <HeaderChat screenBack={'TabNavigation'} navigation={navigation} />
       <WebView
         source={{
@@ -12,6 +12,6 @@ export default function Dic({navigation}: any) {
         }}
         style={{flex: 1}}
       />
-    </Wrapper>
+    </View>
   );
 }

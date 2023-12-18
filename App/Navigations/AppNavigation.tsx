@@ -7,11 +7,10 @@ const Stack = createNativeStackNavigator();
 
 import TabNavigation from './TabNavigation';
 import SignIn from '../Containers/SignIn';
-import {StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import {useLang} from '../Hooks/useLang';
 import Navigator from '../Utils/Navigator';
 import IntroScreen from 'Containers/Introduction';
-import SignInBiometric from 'Containers/SignInBiometric';
 import Splash from 'Containers/Splash';
 import ScanImage from 'Containers/ScanImage/ScanImage';
 import Ask from 'Containers/Home';
@@ -21,13 +20,18 @@ import Dic from 'Containers/Dictionary';
 import Vocabulary from 'Containers/Vocabulary';
 import AskDetails from 'Containers/AskDetails.tsx';
 import Grammar from "Containers/Grammar";
+import Register from 'Containers/Register';
+import ForgotPassword from 'Containers/ForgotPassword';
+import GrammarDetails from "Containers/GrammarDetails";
+import {TabComponentGrammarN1} from "Components/TabComponentGrammar/indexN1";
+import ListenListVideo from "Containers/ListenListVideo";
 export default function AppNavigation() {
   useLang();
   const navigationRef = useRef<any | null>(null);
   // const isLogged = useSelector((state: RootState) => state.auth.auth.isLogged);
 
   const getInitialRouteName = () => {
-    return 'Splash';
+    return 'TabNavigation';
   };
 
   const onRef = (ref: any) => {
@@ -39,10 +43,10 @@ export default function AppNavigation() {
     console.log(navigationRef.current.getState());
   }, [navigationRef]);
   return (
-    <View flex bg-white>
+    <SafeAreaView style={{flex:1}}>
       <StatusBar
         translucent
-        backgroundColor={Colors.bgCl}
+        backgroundColor={'white'}
         barStyle={'dark-content'}
       />
       <NavigationContainer ref={navigationRef}>
@@ -55,7 +59,6 @@ export default function AppNavigation() {
           <Stack.Screen name="SignIn" component={SignIn} />
           <Stack.Screen name="TabNavigation" component={TabNavigation} />
           <Stack.Screen name="Intro" component={IntroScreen} />
-          <Stack.Screen name="SignInBiometric" component={SignInBiometric} />
           <Stack.Screen name="ScanImage" component={ScanImage} />
           <Stack.Screen name="Ask" component={Ask} />
           <Stack.Screen name="AskDetails" component={AskDetails} />
@@ -64,8 +67,14 @@ export default function AppNavigation() {
           <Stack.Screen name="Dic" component={Dic} />
           <Stack.Screen name="Vocabulary" component={Vocabulary} />
           <Stack.Screen name="Grammar" component={Grammar} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+          <Stack.Screen name="GrammarDetails" component={GrammarDetails} />
+          <Stack.Screen name="TabComponentGrammarN1" component={TabComponentGrammarN1} />
+          <Stack.Screen name="ListenListVideo" component={ListenListVideo} />
+
         </Stack.Navigator>
       </NavigationContainer>
-    </View>
+    </SafeAreaView>
   );
 }

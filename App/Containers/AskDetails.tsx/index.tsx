@@ -1,7 +1,6 @@
 import React, {useState, useCallback, useEffect} from 'react';
 import {GiftedChat, InputToolbar} from 'react-native-gifted-chat';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Header from 'Components/Commons/Header/Header';
 import {StyleSheet} from 'react-native';
 import {API, API_KEY_CHAT_BOT} from 'Configs/Constants/API';
 import HeaderChat from "Components/Commons/HeaderChat";

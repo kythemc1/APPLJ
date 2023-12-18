@@ -1,5 +1,5 @@
 import Header from 'Components/Commons/Header/Header';
-import React, {useRef, useState, useCallback} from 'react';
+import React, {useRef, useState, useCallback, useEffect} from 'react';
 import {
   View,
   Text,
@@ -11,108 +11,23 @@ import {
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import YouTubePlayer, {YoutubeIframeRef} from 'react-native-youtube-iframe';
-import ListenAndRead from 'Components/ListenAndRead/index';
 import {Colors} from 'react-native-ui-lib';
 import HeaderChat from "Components/Commons/HeaderChat";
-const mokData = {
-  VideoId: '0zTjrsIWrC4',
-  Name: 'Bạn có tài mà',
-  level: 5,
-  onStart: [
-    {
-      time: 0,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-    {
-      time: 9,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-    {
-      time: 19,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-    {
-      time: 32,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-    {
-      time: 44,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-    {
-      time: 59,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-    {
-      time: 73,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-    {
-      time: 87,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-    {
-      time: 69,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-    {
-      time: 79,
-      content: [
-        '―失礼ですが、お名前は？',
-        '－イ―です',
-        '－イさんですか',
-        '－いいえ、－イですか',
-      ],
-    },
-  ],
-};
+import {useRoute} from "@react-navigation/native";
+import {API_KEY_YOUTUBE} from "Configs/Constants/API";
+import axios from "axios";
 
 export default function ListenDetails({navigation}: any) {
+  const route= useRoute();
+  // @ts-ignore
+  const {level,id,url,name}= route.params;
+  function getYouTubeID(url :String) {
+    const regExp = /^.*(?:youtu.be\/|v\/|vi?\/|u\/\w\/|embed\/|\?v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return match && match[1] ? match[1] : null;
+  }
+
+  const videoId = getYouTubeID(url);
   const [playing, setPlaying] = useState(false);
   const onStateChange = useCallback((state: string) => {
     if (state === 'ended') {
@@ -124,12 +39,31 @@ export default function ListenDetails({navigation}: any) {
     setPlaying(prev => !prev);
   }, []);
   const playerRef = useRef<YoutubeIframeRef>(null);
+
+
+  const [videoTranslations, setVideoTranslations] = useState([]);
+  // useEffect(() => {
+  //   const videoId = 'deY9jHZpXqk'; // ID video YouTube
+  //   const apiKey = 'YOUR_YOUTUBE_API_KEY';
+  //
+  //   // Gửi yêu cầu API để lấy thông tin về các bản dịch của video
+  //   axios.get(`http://video.google.com/timedtext?lang=Japanese&v=${videoId}`)
+  //       .then(response => {
+  //         // const japanese = response.data.items.find((item: { snippet: { language: string; }; }) => item.snippet.language === 'ja'); // Tìm bản dịch tiếng Nhật
+  //         // setVideoTranslations(japanese ? japanese.snippet.name : 'Japanese translation not found');
+  //         console.log(response.data);
+  //       })
+  //       .catch(error => {
+  //         console.error('Error fetching translations:', error);
+  //       });
+  // }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <HeaderChat navigation={navigation} screenBack={'TabNavigation'} />
       <YouTubePlayer
         play={playing}
-        videoId="0zTjrsIWrC4"
+        videoId={videoId}
         height={250}
         width={Dimensions.get('window').width * 1}
         onChangeState={onStateChange}
@@ -138,20 +72,24 @@ export default function ListenDetails({navigation}: any) {
       <TouchableOpacity style={styles.buttonPause} onPress={togglePlaying}>
         <Text style={styles.textPause}>Play / Pause</Text>
       </TouchableOpacity>
-      <ScrollView>
-        {mokData.onStart.map((items, index) => (
-          <View style={styles.viewDetails} key={index}>
-            <TouchableOpacity
-              style={styles.buttonUnder}
-              onPress={() => {
-                playerRef.current?.seekTo(items.time, true);
-              }}>
-              <Text style={styles.textBtn}>Start : {items.time}</Text>
-            </TouchableOpacity>
-            <ListenAndRead content={items.content} />
-          </View>
-        ))}
-      </ScrollView>
+      {/*<ScrollView>*/}
+      {/*  {mokData.onStart.map((items, index) => (*/}
+      {/*    <View style={styles.viewDetails} key={index}>*/}
+      {/*      <TouchableOpacity*/}
+      {/*        style={styles.buttonUnder}*/}
+      {/*        onPress={() => {*/}
+      {/*          playerRef.current?.seekTo(items.time, true);*/}
+      {/*        }}>*/}
+      {/*        <Text style={styles.textBtn}>Start : {items.time}</Text>*/}
+      {/*      </TouchableOpacity>*/}
+      {/*      <ListenAndRead content={items.content} />*/}
+      {/*    </View>*/}
+      {/*  ))}*/}
+      {/*</ScrollView>*/}
+      <View>
+        <Text>{videoTranslations}</Text>
+      </View>
+
     </SafeAreaView>
   );
 }

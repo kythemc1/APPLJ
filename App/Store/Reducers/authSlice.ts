@@ -24,6 +24,7 @@ interface IUserState {
 const initialState = {
   auth: {} as IAuthState,
   user: {} as IUserState | null,
+  // api_key : {} as API_KEY | null,
 };
 
 export const authSlice = createSlice({
@@ -49,6 +50,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const {setAuth, setUser, logout} = authSlice.actions;
+export const {setAuth, setUser, logout } = authSlice.actions;
 
 export default authSlice.reducer;

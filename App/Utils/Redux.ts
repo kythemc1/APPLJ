@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {createAction} from '@reduxjs/toolkit';
 import {createMigrate, MigrationManifest, PersistedState} from 'redux-persist';
 export const generatePersistConfig = ({
   whitelist = [],

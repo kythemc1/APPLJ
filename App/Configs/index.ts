@@ -1,3 +1,2 @@
 
-import './UI';
 import '../Lang';

@@ -1,9 +1,13 @@
-import React from 'react';
-import {Dimensions, StyleSheet} from 'react-native';
+import SideMenu from 'Components/SideMenu';
+import React ,{useState} from 'react';
+import {Dimensions, StyleSheet, TouchableOpacity} from 'react-native';
 import {View, Text, Image} from 'react-native';
 import {Colors} from 'react-native-ui-lib';
 
 const Header = () => {
+  const [showModal,setShowmodal]= useState(false);
+
+
   return (
     <View style={styles.container}>
       <View style={styles.viewHead}>
@@ -11,10 +15,14 @@ const Header = () => {
           <Text style={styles.textHello}>Xin chào bạn,</Text>
           <Text style={styles.textWelcome}>Chúc bạn một ngày tốt lành !</Text>
         </View>
-        <Image
-          source={require('../../../Assets/Images/3.jpg')}
-          style={styles.avatar}
-        />
+        <TouchableOpacity style={styles.showModal} onPress={()=>setShowmodal(true)}>
+            <SideMenu visible={showModal} onDismis={() => setShowmodal(false)}/>
+            <Image
+           source={require('../../../Assets/Images/3.jpg')}
+            style={styles.avatar}
+            />
+        </TouchableOpacity>
+
       </View>
     </View>
   );
@@ -42,7 +50,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 90,
-    marginTop: 5
+    marginTop: 5,backgroundColor:'red'
   },
   textWelcome: {
     fontFamily: 'Poppins-Regular',
@@ -55,5 +63,10 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.9,
   },
   viewText: {},
+  showModal: {
+    height: 40,
+    width: 40,
+    borderRadius: 90,
+  },
 });
 export default Header;

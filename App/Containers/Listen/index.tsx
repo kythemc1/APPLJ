@@ -2,22 +2,19 @@ import Header from 'Components/Commons/Header/Header';
 import React from 'react';
 import {
   Dimensions,
-  ScrollView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
+  Text, TouchableOpacity,
   View,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import ListenComponent from 'Components/Commons/ListenComponent';
 import {Colors} from 'react-native-ui-lib';
+import ListenComponent from "Components/Commons/ListenComponent";
 
-export default function Listen({navigation}: any) {
+export default function Listen({navigation}: {navigation: any}) {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
-      <ScrollView>
-        <View
+      <View
           style={{
             width: Dimensions.get('window').width * 0.9,
             alignSelf: 'center',
@@ -29,81 +26,77 @@ export default function Listen({navigation}: any) {
           </Text>
           <Text style={styles.textIntro}>- Carmax không nói câu này -</Text>
         </View>
-        <View>
-          <View style={styles.viewCourse}>
-            <TouchableOpacity
+        {/*<LevelContainer linkImg={'../../Assets/Images/radio.png'} navigation={navigation} srcPressN1={"ListenDetails"} />*/}
+      <View style={styles.viewCourse}>
+        <TouchableOpacity
+            onPress={() => {
+
+              navigation.navigate('ListenListVideo',{level: 'N5'});
+            }}>
+          <ListenComponent
+              linkImg={'../../Assets/Images/radio.png'}
+              name={'JLPT N5'}
+              color={'#2a4d69'}
+              navigation={navigation}
+          />
+        </TouchableOpacity>
+          <TouchableOpacity
               onPress={() => {
-                navigation.navigate('ListenDetails');
+
+                  navigation.navigate('ListenListVideo', {level : 'N4'});
               }}>
               <ListenComponent
-                linkImg={'../../Assets/Images/radio.png'}
-                name={'JLPT N5'}
-                color={'#2a4d69'}
-                navigation={navigation}
+                  linkImg={'../../Assets/Images/radio.png'}
+                  name={'JLPT N4'}
+                  color={'#2a4d69'}
+                  navigation={navigation}
               />
+          </TouchableOpacity>
+
+      </View>
+        <View style={styles.viewCourse}>
+            <TouchableOpacity
+                onPress={() => {
+
+                    navigation.navigate('ListenListVideo',{level: 'N3'});
+                }}>
+                <ListenComponent
+                    linkImg={'../../Assets/Images/radio.png'}
+                    name={'JLPT N3'}
+                    color={'#2a4d69'}
+                    navigation={navigation}
+                />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ListenDetails');
-              }}>
-              <ListenComponent
-                linkImg={'../../Assets/Images/radio.png'}
-                name={'JLPT N4'}
-                color={'#2a4d69'}
-                navigation={navigation}
-              />
+                onPress={() => {
+
+                    navigation.navigate('ListenListVideo', {level : 'N2'});
+                }}>
+                <ListenComponent
+                    linkImg={'../../Assets/Images/radio.png'}
+                    name={'JLPT N2'}
+                    color={'#2a4d69'}
+                    navigation={navigation}
+                />
             </TouchableOpacity>
-          </View>
-          <View style={styles.viewCourse}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ListenDetails');
-              }}>
-              <ListenComponent
-                linkImg={'../../Assets/Images/radio.png'}
-                name={'JLPT N3'}
-                color={'#2a4d69'}
-                navigation={navigation}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ListenDetails');
-              }}>
-              <ListenComponent
-                linkImg={'../../Assets/Images/radio.png'}
-                name={'JLPT N2'}
-                color={'#2a4d69'}
-                navigation={navigation}
-              />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.viewCourse}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ListenDetails');
-              }}>
-              <ListenComponent
-                linkImg={'../../Assets/Images/radio.png'}
-                name={'JLPT N1'}
-                color={'#2a4d69'}
-                navigation={navigation}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ListenDetails');
-              }}>
-              <ListenComponent
-                linkImg={'../../Assets/Images/radio.png'}
-                name={'JLPT N0'}
-                color={'#2a4d69'}
-                navigation={navigation}
-              />
-            </TouchableOpacity>
-          </View>
+
         </View>
-      </ScrollView>
+        <View style={styles.viewCourse}>
+            <TouchableOpacity
+                onPress={() => {
+
+                    navigation.navigate('ListenListVideo', {level : 'N1'});
+                }}>
+                <ListenComponent
+                    linkImg={'../../Assets/Images/radio.png'}
+                    name={'JLPT N1'}
+                    color={'#2a4d69'}
+                    navigation={navigation}
+                />
+            </TouchableOpacity>
+
+
+        </View>
     </SafeAreaView>
   );
 }

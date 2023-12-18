@@ -1,32 +1,12 @@
 import {API} from '../../Configs/Constants/API';
-import {QUERY_KEY} from '../../Configs/Constants/QueryKeys';
 import {useState} from 'react';
-import {useMutation} from 'react-query';
 import {useDispatch} from 'react-redux';
-import Axios from '../../Services/Axios';
-import {logout, setUser} from '../../Store/Reducers/authSlice';
-import {store} from '../../Store/reduxProvider';
+import {logout, setAuth, setUser} from '../../Store/Reducers/authSlice';
 import {useDebouncedCallback} from 'use-debounce';
 import Navigator from '../../Utils/Navigator';
+import axios from 'axios';
 
-const fetchAccount = async () => {
-  const {data} = await Axios({
-    method: 'get',
-    url: API.AUTH.ACCOUNT,
-  });
-  return data.data;
-};
 
-export const useAccount = () =>
-  useMutation(() => fetchAccount(), {
-    onSuccess: data => {
-      store.dispatch(setUser(data));
-    },
-    onError: error => {
-      console.log(error);
-    },
-    mutationKey: [QUERY_KEY.AUTH.ACCOUNT],
-  });
 
 
 export const useAuth = () => {
@@ -49,12 +29,53 @@ export const useAuth = () => {
   const onLogout = () => {
     dispatch(logout());
     Navigator.reset('SignIn');
+    console.log('log outtttttttt');
+    
   };
 
   const login=useDebouncedCallback(
     async ({ username, password }: { username: string; password: string }) => {
-      if(username==='Admin' && password ==='A')
-      Navigator.reset('TabNavigation');
+      console.log('vao ham login');
+      
+      // if(username==='Admin' && password ==='A')
+      try{
+        const data = await axios({
+          url : API.API_AUTH_LOGIN,
+          data: {
+            username,
+            password
+          },
+          method: 'post'
+        })
+        if (data){
+          console.log('dataaaa  ',data);
+          dispatch(setAuth({
+            isLogged: true,
+            token: data.data.accessToken,
+            refreshToken: data.data.refreshToken,
+            refreshTokenExpiredDate: null,
+            type: data.data.type
+          }))
+          dispatch(setUser({
+            id: null,
+            address: data.data.address,
+            authorities: data.data.listRole,
+            avatar: null,
+            birthday: null,
+            firstName: data.data.firstName,
+            gender: null,
+            lastName: data.data.lastname,
+            status: null,
+            username: data.data.userName
+          }))
+          Navigator.reset('TabNavigation');
+
+        }
+      }
+      catch(erorr){
+        console.log('loi dang nhap  ',erorr);
+        
+      }
     }
   )
   return {
