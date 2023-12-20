@@ -10,7 +10,7 @@ interface props {
     screen : string,
     navigation : any
 }
-const SwitchTabLevelGrammar = ({screen}: any) => {
+const SwitchTabLevelGrammar = () => {
 
         return(
             <Tab.Navigator initialRouteName={"N1"}

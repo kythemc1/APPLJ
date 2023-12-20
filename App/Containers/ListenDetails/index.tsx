@@ -14,8 +14,7 @@ import YouTubePlayer, {YoutubeIframeRef} from 'react-native-youtube-iframe';
 import {Colors} from 'react-native-ui-lib';
 import HeaderChat from "Components/Commons/HeaderChat";
 import {useRoute} from "@react-navigation/native";
-import {API_KEY_YOUTUBE} from "Configs/Constants/API";
-import axios from "axios";
+
 
 export default function ListenDetails({navigation}: any) {
   const route= useRoute();
@@ -24,10 +23,10 @@ export default function ListenDetails({navigation}: any) {
   function getYouTubeID(url :String) {
     const regExp = /^.*(?:youtu.be\/|v\/|vi?\/|u\/\w\/|embed\/|\?v=)([^#&?]*).*/;
     const match = url.match(regExp);
-    return match && match[1] ? match[1] : null;
+    return match && match[1] ? match[1] : '';
   }
 
-  const videoId = getYouTubeID(url);
+  let videoId = getYouTubeID(url);
   const [playing, setPlaying] = useState(false);
   const onStateChange = useCallback((state: string) => {
     if (state === 'ended') {

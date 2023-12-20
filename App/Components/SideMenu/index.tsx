@@ -15,9 +15,7 @@ interface SideMenu {
 
   const SideMenu = (props: SideMenu) => {
 
-    const username = useSelector((state: RootState)=> state.auth.user?.username,
-
-    )
+    const username = useSelector((state: RootState)=> state.auth.user?.username)
 
     return (
         <Modal
@@ -38,7 +36,11 @@ interface SideMenu {
                         Đăng xuất
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.viewLine}>
+                <TouchableOpacity style={styles.viewLine} onPress={
+                    ()=>{
+                        props.navigation.navigate('UserProfileView');
+                    }
+                }>
                     <Text style={styles.textPress}>
                         Cài đặt
                     </Text>

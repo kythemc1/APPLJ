@@ -21,4 +21,18 @@ export const API = {
   API_GET_LISTEN_N4: `${API_ROOT}listen/get-all-n4/1`,
   API_GET_LISTEN_N5: `${API_ROOT}listen/get-all-n5/1`,
 
+  //Grammar
+  API_GET_GRAMMAR_N1: `${API_ROOT}grammar/get-all-n1/1`,
+  API_GET_GRAMMAR_N2: `${API_ROOT}grammar/get-all-n2/1`,
+  API_GET_GRAMMAR_N3: `${API_ROOT}grammar/get-all-n3/1`,
+  API_GET_GRAMMAR_N4: `${API_ROOT}grammar/get-all-n4/1`,
+  API_GET_GRAMMAR_N5: `${API_ROOT}grammar/get-all-n5/1`,
+
+  //Vocabulary
+  API_GET_VOCABULARY_N1: `${API_ROOT}vocabulary/get-all-n1/1`,
+  API_GET_VOCABULARY_N2: `${API_ROOT}vocabulary/get-all-n2/1`,
+  API_GET_VOCABULARY_N3: `${API_ROOT}vocabulary/get-all-n3/1`,
+  API_GET_VOCABULARY_N4: `${API_ROOT}vocabulary/get-all-n4/1`,
+  API_GET_VOCABULARY_N5: `${API_ROOT}vocabulary/get-all-n5/1`,
+
 };

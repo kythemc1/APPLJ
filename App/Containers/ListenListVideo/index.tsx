@@ -4,7 +4,6 @@ import {
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderChat from "Components/Commons/HeaderChat";
-import ComponentOnpressShowList from "Components/ComponentOnpressShowList";
 import {useRoute} from "@react-navigation/native";
 import {API} from "Configs/Constants/API";
 import axios from "axios";
@@ -28,6 +27,7 @@ export default function ListenListVideo({navigation}: { navigation: any }) {
         .then(response => {
             if(response.data!=null){
                 setLists(response.data);
+                console.log(response.data)
             }
         })
         .catch(error => {
@@ -39,8 +39,8 @@ export default function ListenListVideo({navigation}: { navigation: any }) {
         <SafeAreaView style={styles.container}>
             <HeaderChat screenBack={'TabNavigation'} navigation={navigation}/>
             {
-                lists.map((list,index)=>(
-                    <ComponentPressToListen key={index} name={'Listen'} navigation={navigation} id={list.listenId} level={level} url={list.url} pressToScreen={'ListenDetails'}/>
+                lists.map(({listenId, url}, index)=>(
+                    <ComponentPressToListen key={index} name={'Listen'} navigation={navigation} id={listenId} level={level} url={url} pressToScreen={'ListenDetails'}/>
                 ))
             }
         </SafeAreaView>

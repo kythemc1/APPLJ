@@ -2,18 +2,17 @@ import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
-  ScrollView,
   View,
   TouchableOpacity,
   ToastAndroid,
   ActivityIndicator,
-  SafeAreaView,
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import RNFS from 'react-native-fs';
 import callGoogleVisionAsync from './GoogleVison';
 import {Colors} from 'react-native-ui-lib';
 import HeaderChat from 'Components/Commons/HeaderChat';
+import {SafeAreaView} from "react-native-safe-area-context";
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: '#f9f4f4'},

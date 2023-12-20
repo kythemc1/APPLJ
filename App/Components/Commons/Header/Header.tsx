@@ -4,7 +4,10 @@ import {Dimensions, StyleSheet, TouchableOpacity} from 'react-native';
 import {View, Text, Image} from 'react-native';
 import {Colors} from 'react-native-ui-lib';
 
-const Header = () => {
+interface props {
+  navigation : any;
+}
+const Header = (props:props) => {
   const [showModal,setShowmodal]= useState(false);
 
 
@@ -16,7 +19,7 @@ const Header = () => {
           <Text style={styles.textWelcome}>Chúc bạn một ngày tốt lành !</Text>
         </View>
         <TouchableOpacity style={styles.showModal} onPress={()=>setShowmodal(true)}>
-            <SideMenu visible={showModal} onDismis={() => setShowmodal(false)}/>
+            <SideMenu navigation={props.navigation} visible={showModal} onDismis={() => setShowmodal(false)}/>
             <Image
            source={require('../../../Assets/Images/3.jpg')}
             style={styles.avatar}

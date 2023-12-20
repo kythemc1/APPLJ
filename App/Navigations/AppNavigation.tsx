@@ -25,6 +25,8 @@ import ForgotPassword from 'Containers/ForgotPassword';
 import GrammarDetails from "Containers/GrammarDetails";
 import {TabComponentGrammarN1} from "Components/TabComponentGrammar/indexN1";
 import ListenListVideo from "Containers/ListenListVideo";
+import More from "Containers/More";
+import UserProfileView from "Containers/UserSetting";
 export default function AppNavigation() {
   useLang();
   const navigationRef = useRef<any | null>(null);
@@ -66,12 +68,14 @@ export default function AppNavigation() {
           <Stack.Screen name="ListenDetails" component={ListenDetails} />
           <Stack.Screen name="Dic" component={Dic} />
           <Stack.Screen name="Vocabulary" component={Vocabulary} />
+          <Stack.Screen name="More" component={More} />
           <Stack.Screen name="Grammar" component={Grammar} />
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           <Stack.Screen name="GrammarDetails" component={GrammarDetails} />
           <Stack.Screen name="TabComponentGrammarN1" component={TabComponentGrammarN1} />
           <Stack.Screen name="ListenListVideo" component={ListenListVideo} />
+          <Stack.Screen name="UserProfileView" component={UserProfileView} />
 
         </Stack.Navigator>
       </NavigationContainer>

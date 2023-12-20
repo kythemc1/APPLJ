@@ -16,7 +16,7 @@ import Header from 'Components/Commons/Header/Header';
 export default function Ask({navigation}: any) {
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header  navigation={navigation}/>
       <View>
         <Image
           style={styles.imgWelcome}

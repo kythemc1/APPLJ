@@ -2,9 +2,10 @@ import React from 'react';
 import WebView from 'react-native-webview';
 import HeaderChat from 'Components/Commons/HeaderChat';
 import {View} from "react-native";
+import {SafeAreaView} from "react-native-safe-area-context";
 export default function Dic({navigation}: any) {
   return (
-    <View>
+    <SafeAreaView>
       <HeaderChat screenBack={'TabNavigation'} navigation={navigation} />
       <WebView
         source={{
@@ -12,6 +13,6 @@ export default function Dic({navigation}: any) {
         }}
         style={{flex: 1}}
       />
-    </View>
+    </SafeAreaView>
   );
 }

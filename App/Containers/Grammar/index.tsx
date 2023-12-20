@@ -15,7 +15,7 @@ export default function Grammar({navigation}: any) {
             </Text>
         </View>
 
-      <SwitchTabLevelGrammar> </SwitchTabLevelGrammar>
+      <SwitchTabLevelGrammar/>
     </SafeAreaView>
   );
 }

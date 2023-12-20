@@ -1,12 +1,11 @@
 import React from 'react';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Dimensions, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import MOCK_DATA from 'Utils/Mock';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {Colors} from 'react-native-ui-lib';
-import SwitchTabLevel from "Components/SwitchTabLevelGrammar";
+import SwitchTabLevelVocabulary from "Components/SwitchTabLevelVocabulary";
 
-export default function Vocabulary({navigation}: any) {
+export default function Vocabulary() {
   return (
     <SafeAreaView style={styles.container}>
 
@@ -15,7 +14,7 @@ export default function Vocabulary({navigation}: any) {
             Vocabulary
           </Text>
         </View>
-        <SwitchTabLevel  scren={'Vocabulary'}></SwitchTabLevel>
+        <SwitchTabLevelVocabulary ></SwitchTabLevelVocabulary>
        </SafeAreaView>
   );
 }

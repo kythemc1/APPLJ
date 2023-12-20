@@ -1,7 +1,9 @@
 import React from 'react';
-import {Image, View, Text, TouchableOpacity, ScrollView, SafeAreaView, StyleSheet, Dimensions} from 'react-native';
+import {Image, View, Text, TouchableOpacity, ScrollView, StyleSheet, Dimensions} from 'react-native';
 import Header from '../../Components/Commons/Header/Header';
 import {Colors} from 'react-native-ui-lib';
+import ListenComponent from "Components/Commons/ListenComponent";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 export default function More({navigation}: any) {
   const renderRowItem = (iconLeft: any, title: string, onPress: () => void) => {
@@ -34,55 +36,59 @@ export default function More({navigation}: any) {
   };
   return (
       <SafeAreaView style={styles.container}>
-      <Header />
-      <View style={{flex: 1, backgroundColor: '#f9f4f4'}}>
-        <ScrollView>
-          <Text
-            style={{
-              paddingHorizontal: 10,
-              paddingVertical: 20,
-              fontWeight: 'bold',
-              color: Colors.text,
-              fontSize: 18,
-            }}>
-            Game
-          </Text>
-          {renderRowItem(
-            require('../../Assets/Images/change_password.png'),
-            'Draw',
-            () => {
-              navigation.navigate('Intro');
-            },
-          )}
-          <Text
-            style={{
-              paddingHorizontal: 10,
-              paddingVertical: 20,
-              fontWeight: 'bold',
-              color: Colors.text,
-              fontSize: 18,
-            }}>
-            Khác
-          </Text>
-          {renderRowItem(
-            require('../../Assets/Images/info.png'),
-            'Scan Image',
-            () => {
-              navigation.navigate('ScanImage');
-            },
-          )}
-          {renderRowItem(
-            require('../../Assets/Images/policy.png'),
-            'Dictionary',
-            () => {
-              navigation.navigate('Dic');
-            },
-          )}
-        </ScrollView>
-      </View>
+          <Header />
+
+              <ScrollView>
+                  <Text
+                      style={{
+                          paddingHorizontal: 10,
+                          paddingVertical: 20,
+                          fontWeight: 'bold',
+                          color: Colors.text,
+                          fontSize: 18,
+                      }}>
+                      Game
+                  </Text>
+                  {renderRowItem(
+                      require('../../Assets/Images/change_password.png'),
+                      'Draw',
+                      () => {
+                          navigation.navigate('Intro');
+                      },
+                  )}
+                  <Text
+                      style={{
+                          paddingHorizontal: 10,
+                          paddingVertical: 20,
+                          fontWeight: 'bold',
+                          color: Colors.text,
+                          fontSize: 18,
+                      }}>
+                      Khác
+                  </Text>
+                  {renderRowItem(
+                      require('../../Assets/Images/info.png'),
+                      'Scan Image',
+                      () => {
+                          navigation.navigate('ScanImage');
+                      },
+                  )}
+                  {renderRowItem(
+                      require('../../Assets/Images/policy.png'),
+                      'Dictionary',
+                      () => {
+                          navigation.navigate('Dic');
+                      },
+                  )}
+              </ScrollView>
+
       </SafeAreaView>
+
   );
 }
 const styles = StyleSheet.create({
-    container: {flex: 1, backgroundColor: '#f9f4f4'},
+    container: {
+        backgroundColor: '#f9f4f4',
+        flex: 1,
+    },
 });

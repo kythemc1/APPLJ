@@ -13,7 +13,7 @@ import ListenComponent from "Components/Commons/ListenComponent";
 export default function Listen({navigation}: {navigation: any}) {
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header  navigation={navigation}/>
       <View
           style={{
             width: Dimensions.get('window').width * 0.9,
